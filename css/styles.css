@@ -2428,7 +2428,7 @@
 
     .cta-section .cta-content h2 {
       color: #fff;
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
       margin-bottom: var(--spacing-sm);
     }
 
@@ -2471,7 +2471,7 @@
     }
 
     .cta-main h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       color: #fff;
       margin-bottom: 1.5rem;
       line-height: 1.15;
@@ -2723,25 +2723,47 @@
 
     .social-icons {
       display: flex;
-      gap: var(--spacing-sm);
+      gap: 12px;
       margin-top: var(--spacing-md);
     }
 
     .social-icon {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .social-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    /* Specifically for stroke-based icons like LinkedIn's Feather icon */
+    .social-icon svg[stroke] {
+      fill: none;
+      stroke: currentColor;
     }
 
     .social-icon:hover {
       background-color: var(--primary-violet);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(115, 64, 255, 0.3);
+      border-color: var(--primary-violet);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(115, 64, 255, 0.3);
+      color: #ffffff;
+    }
+
+    .social-icon:hover svg {
+      transform: scale(1.1);
     }
 
     .footer-bottom {
