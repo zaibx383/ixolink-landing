@@ -3343,15 +3343,25 @@
     }
 
     /* Animation utilities */
-    .animate-on-scroll {
+    /* Only hide elements if JavaScript is active to avoid "invisible" sections if JS fails */
+    .js .animate-on-scroll {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      visibility: hidden;
     }
 
-    .animate-on-scroll.visible {
+    .js .animate-on-scroll.visible {
       opacity: 1;
       transform: translateY(0);
+      visibility: visible;
+    }
+
+    /* Fallback for safety - if an element is scrolled deep into view, it must be visible */
+    .animate-on-scroll.force-visible {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
     }
 
     .delay-100 {

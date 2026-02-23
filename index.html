@@ -62,7 +62,7 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">300+ Campaigns Supported · 98% Data Integrity Standard</div>
-        <h1>Stop Chasing Leads. Start Closing Deals.</h1>
+        <h1>Build Pipelines That <br>Actually Convert</h1>
         <p>We deliver structured B2B intelligence backed by layered validation and research-driven profiling so your
           team spends time selling, not cleaning lists.</p>
         <p class="hero-trust">Clear targeting. Verified contacts. A disciplined process built for measurable
@@ -2090,25 +2090,39 @@
         });
       });
 
-      // Scroll animation
+      // Add .js class to document if JS is enabled
+      document.documentElement.classList.add('js');
+
+      // Intersection Observer for scroll animations
       const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
-      const checkIfInView = () => {
-        const windowHeight = window.innerHeight;
-        const windowTopPosition = window.scrollY;
-        const windowBottomPosition = windowTopPosition + windowHeight;
-
-        animatedElements.forEach(element => {
-          const elementHeight = element.offsetHeight;
-          const elementTopPosition = element.offsetTop;
-          const elementBottomPosition = elementTopPosition + elementHeight;
-
-          // Check if element is in viewport
-          if ((elementBottomPosition >= windowTopPosition) &&
-            (elementTopPosition <= windowBottomPosition - 100)) {
-            element.classList.add('visible');
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Once visible, stop observing
+            animationObserver.unobserve(entry.target);
           }
         });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before it enters
+      });
+
+      animatedElements.forEach(el => animationObserver.observe(el));
+
+      // Safety Fallback: Ensure all sections are visible eventually
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
+            el.classList.add('visible');
+          });
+        }, 3000); // 3 seconds after load, force everything visible
+      });
+
+      // Simple function kept for any manual checks if needed (keeping the name to avoid breaking dependencies)
+      const checkIfInView = () => {
+        // Now handled by Observer, but keeping function to avoid errors in other parts
       };
 
       // Process Timeline accordion (How We Deliver Results)
