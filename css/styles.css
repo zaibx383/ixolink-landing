@@ -39,7 +39,7 @@
     }
 
     html {
-      background: linear-gradient(to bottom, #fff 50%, var(--midnight-blue) 50%);
+      background: var(--midnight-blue);
       margin: 0;
       padding: 0;
     }
@@ -1992,6 +1992,7 @@
       padding: var(--spacing-lg) 0;
       background-color: white;
       position: relative;
+      overflow: hidden;
     }
 
     .case-studies-container {
@@ -2880,8 +2881,9 @@
       padding: var(--spacing-md) 0;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      text-align: center;
       flex-wrap: wrap;
       gap: var(--spacing-sm);
     }
@@ -3215,7 +3217,8 @@
 
       .footer-bottom {
         flex-direction: column;
-        text-align: left;
+        justify-content: center;
+        text-align: center;
       }
 
       .legal-links {
