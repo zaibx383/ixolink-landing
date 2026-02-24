@@ -39,7 +39,7 @@
     }
 
     html {
-      background: var(--midnight-blue);
+      background: linear-gradient(to bottom, #fff 50%, var(--midnight-blue) 50%);
       margin: 0;
       padding: 0;
     }
@@ -2519,7 +2519,8 @@
 
     /* CTA Section */
     .cta-section {
-      padding: var(--spacing-xl) 0;
+      padding: var(--spacing-xl) 0 var(--spacing-xl);
+      /* Balanced padding */
       position: relative;
       overflow: hidden;
     }
@@ -2732,6 +2733,8 @@
       padding-top: var(--spacing-lg);
       position: relative;
       overflow: hidden;
+      margin-top: 6rem;
+      /* Pushes footer lower */
     }
 
     .footer-wave {
