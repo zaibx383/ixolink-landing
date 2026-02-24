@@ -54,7 +54,7 @@
     <div class="container">
       <h1>Book a Free Consultation</h1>
       <p class="page-subtitle">Ready to fill your pipeline with leads that convert? Join 300+ teams who stopped guessing
-        and started closing. Get a free audit of your target market and a custom plan   no commitment.</p>
+        and started closing. Get a free audit of your target market and a custom plan — no commitment.</p>
     </div>
 
   </section>
@@ -206,16 +206,16 @@
 
   <script>
     document.documentElement.classList.add('js');
-    const mobileMenuBtn = document.querySelector('.mobile menu btn');
-    const closeMenuBtn = document.querySelector('.close menu');
-    const mobileMenu = document.querySelector('.mobile menu');
-    document.querySelectorAll('.mobile menu a').forEach(link => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const closeMenuBtn = document.querySelector('.close-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
     });
     mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
     closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
 
-    document.getElementById('contact form').addEventListener('submit', function (e) {
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
       alert('Thank you for your message. We’ll get back to you within 1 to 2 business days.');
     });
@@ -227,12 +227,12 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px  50px 0px' });
-    document.querySelectorAll('.animate on scroll').forEach(el => observer.observe(el));
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.querySelectorAll('.animate on scroll:not(.visible)').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
           el.classList.add('visible');
         });
       }, 3000);

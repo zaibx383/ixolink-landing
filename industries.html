@@ -271,10 +271,10 @@
 
   <script>
     document.documentElement.classList.add('js');
-    const mobileMenuBtn = document.querySelector('.mobile menu btn');
-    const closeMenuBtn = document.querySelector('.close menu');
-    const mobileMenu = document.querySelector('.mobile menu');
-    document.querySelectorAll('.mobile menu a').forEach(link => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const closeMenuBtn = document.querySelector('.close-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
     });
     mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
@@ -287,12 +287,12 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px  50px 0px' });
-    document.querySelectorAll('.animate on scroll').forEach(el => observer.observe(el));
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.querySelectorAll('.animate on scroll:not(.visible)').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
           el.classList.add('visible');
         });
       }, 3000);
