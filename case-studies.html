@@ -53,7 +53,7 @@
     </div>
     <div class="container">
       <h1>Where Data Turns Into Revenue</h1>
-      <p class="page-subtitle">Real partnerships. Measurable outcomes. Explore how we’ve helped growth-focused teams
+      <p class="page-subtitle">Real partnerships. Measurable outcomes. Explore how we’ve helped growth focused teams
         strengthen targeting, improve pipeline quality, and convert better opportunities into closed deals.</p>
     </div>
 
@@ -101,7 +101,7 @@
               </div>
             </div>
             <p>A SaaS company was reaching companies but not the real buyers. We identified buying committees, validated
-              decision authority, and structured account intelligence to unlock higher-value enterprise conversations.
+              decision authority, and structured account intelligence to unlock higher value enterprise conversations.
             </p>
             <a href="contact.html" class="case-study-link">Read the case study <svg xmlns="http://www.w3.org/2000/svg"
                 width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -219,8 +219,8 @@
               </div>
               <div class="industry-tag">Advertising Services</div>
               <blockquote>"If you need quality leads for yourself or a sales organization, look no further! These guys
-                are some of the best, if not the best. Super fast turnaround time — just tell them the companies and the
-                types of titles/people you're trying to reach, and they will deliver a high-quality target list
+                are some of the best, if not the best. Super fast turnaround time   just tell them the companies and the
+                types of titles/people you're trying to reach, and they will deliver a high quality target list
                 immediately."</blockquote>
               <div class="testimonial-author">
                 <img src="images/testimonials/Sonobi.png" alt="Miles Dennison">
@@ -346,7 +346,7 @@
                 <span>5.0</span>
               </div>
               <div class="industry-tag">Investment Banking</div>
-              <blockquote>"This guy is excellent — I really enjoyed working with him and appreciated his fast
+              <blockquote>"This guy is excellent   I really enjoyed working with him and appreciated his fast
                 turnaround. The project wasn't overly complicated, but it needed to be done quickly and on time. I can
                 recommend working with him anytime."</blockquote>
               <div class="testimonial-author">
@@ -599,7 +599,7 @@
                 <span>5.0</span>
               </div>
               <div class="industry-tag">Staffing &amp; Recruiting</div>
-              <blockquote>"IxoLink is always reliable whenever I need additional candidate-sourcing help. I will
+              <blockquote>"IxoLink is always reliable whenever I need additional candidate sourcing help. I will
                 continue to be a repeat customer."</blockquote>
               <div class="testimonial-author">
                 <img src="images/testimonials/tamara.png" alt="Tamara Battle">
@@ -685,7 +685,7 @@
               <div class="industry-tag">Software Development</div>
               <blockquote>"Aznair Tariq did fast and accurate work over the holidays. He paid close attention to detail
                 and shared early work to confirm he was on the right track. He did a wonderful job with a complicated
-                PDF-to-Excel conversion."</blockquote>
+                PDF to Excel conversion."</blockquote>
               <div class="testimonial-author">
                 <img src="images/testimonials/laura.png" alt="Laura Sutton">
                 <div class="author-info">
@@ -897,10 +897,10 @@
 
   <script>
     document.documentElement.classList.add('js');
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const closeMenuBtn = document.querySelector('.close-menu');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
+    const mobileMenuBtn = document.querySelector('.mobile menu btn');
+    const closeMenuBtn = document.querySelector('.close menu');
+    const mobileMenu = document.querySelector('.mobile menu');
+    document.querySelectorAll('.mobile menu a').forEach(link => {
       link.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
     });
     mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
@@ -913,12 +913,12 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    }, { threshold: 0.1, rootMargin: '0px 0px  50px 0px' });
+    document.querySelectorAll('.animate on scroll').forEach(el => observer.observe(el));
 
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
+        document.querySelectorAll('.animate on scroll:not(.visible)').forEach(el => {
           el.classList.add('visible');
         });
       }, 3000);
@@ -926,12 +926,12 @@
 
     // Testimonials slider functionality
     let currentTestimonial = 0;
-    const testimonialTrack = document.querySelector('.testimonials-track');
-    const prevTestBtn = document.getElementById('prev-testimonial');
-    const nextTestBtn = document.getElementById('next-testimonial');
+    const testimonialTrack = document.querySelector('.testimonials track');
+    const prevTestBtn = document.getElementById('prev testimonial');
+    const nextTestBtn = document.getElementById('next testimonial');
 
     function getTestimonialSlideConfig() {
-      const cards = document.querySelectorAll('.testimonial-card');
+      const cards = document.querySelectorAll('.testimonial card');
       const n = cards.length;
       let slideWidth = 0;
       let cardsPerView = 1;
@@ -947,7 +947,7 @@
         slideWidth = 100;
       }
 
-      const maxSlides = Math.max(0, n - cardsPerView);
+      const maxSlides = Math.max(0, n   cardsPerView);
       return { slideWidth, maxSlides };
     }
 
@@ -955,7 +955,7 @@
     const MAX_VIS = 7;
 
     function buildTestimonialDots() {
-      const dotsContainer = document.getElementById('testimonial-dots');
+      const dotsContainer = document.getElementById('testimonial dots');
       if (!dotsContainer) return;
       const { maxSlides } = getTestimonialSlideConfig();
       const total = maxSlides + 1;
@@ -974,20 +974,20 @@
     }
 
     function updateTestimonialDots() {
-      const dotsContainer = document.getElementById('testimonial-dots');
+      const dotsContainer = document.getElementById('testimonial dots');
       if (!dotsContainer) return;
       const total = parseInt(dotsContainer.dataset.total) || 0;
       const half = Math.floor(MAX_VIS / 2);
-      const offset = Math.max(0, Math.min(currentTestimonial - half, total - MAX_VIS));
+      const offset = Math.max(0, Math.min(currentTestimonial   half, total   MAX_VIS));
 
       Array.from(dotsContainer.children).forEach((dot, i) => {
         dot.classList.toggle('active', i === currentTestimonial);
-        const isEdge = (i <= offset && i > 0) || (i >= offset + MAX_VIS - 1 && i < total - 1);
+        const isEdge = (i <= offset && i > 0) || (i >= offset + MAX_VIS   1 && i < total - 1);
         dot.classList.toggle('dot-sm', isEdge);
       });
 
       if (total > MAX_VIS) {
-        dotsContainer.style.transform = `translateX(-${offset * DOT_W}px)`;
+        dotsContainer.style.transform = `translateX( ${offset * DOT_W}px)`;
       } else {
         dotsContainer.style.transform = 'none';
       }
@@ -997,14 +997,14 @@
       const { slideWidth, maxSlides } = getTestimonialSlideConfig();
       if (currentTestimonial < 0) currentTestimonial = 0;
       if (currentTestimonial > maxSlides) currentTestimonial = maxSlides;
-      testimonialTrack.style.transform = `translateX(-${currentTestimonial * slideWidth}%)`;
+      testimonialTrack.style.transform = `translateX( ${currentTestimonial * slideWidth}%)`;
       buildTestimonialDots();
       updateTestimonialDots();
     }
 
     if (prevTestBtn) {
       prevTestBtn.addEventListener('click', () => {
-        currentTestimonial--;
+        currentTestimonial ;
         updateTestimonialsSlider();
       });
     }
@@ -1021,7 +1021,7 @@
     });
 
     window.addEventListener('resize', () => {
-      const dotsContainer = document.getElementById('testimonial-dots');
+      const dotsContainer = document.getElementById('testimonial dots');
       if (dotsContainer) dotsContainer.dataset.total = '';
       const { maxSlides } = getTestimonialSlideConfig();
       if (currentTestimonial > maxSlides) currentTestimonial = maxSlides;
