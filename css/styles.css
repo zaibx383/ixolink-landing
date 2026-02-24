@@ -3498,13 +3498,12 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      visibility: hidden;
+      /* visibility: hidden; removed as it can interfere with IntersectionObserver in some environments */
     }
 
     .js .animate-on-scroll.visible {
       opacity: 1;
       transform: translateY(0);
-      visibility: visible;
     }
 
     /* Fallback for safety - if an element is scrolled deep into view, it must be visible */
