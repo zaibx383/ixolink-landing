@@ -59,6 +59,20 @@
       overflow-x: hidden;
     }
 
+    /* Landing page: remove gap below footer – constrain height and match footer color */
+    html.page-home {
+      height: auto;
+      min-height: 0;
+      overflow-x: hidden;
+    }
+    body.page-home {
+      min-height: 0;
+      background: linear-gradient(180deg, #fff 0%, var(--soft-white) 15%, var(--soft-white) 85%, var(--midnight-blue) 100%);
+    }
+    body.page-home footer {
+      margin-bottom: 0;
+    }
+
     h1,
     h2,
     h3,

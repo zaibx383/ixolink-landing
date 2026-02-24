@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-home">
 
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
   <!-- Styles moved to css/styles.css -->
 </head>
 
-<body>
+<body class="page-home">
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress"></div>
 
@@ -2508,6 +2508,30 @@
       }
 
       animateBadge();
+    </script>
+    <!-- Remove gap below footer on landing page only -->
+    <script>
+      (function () {
+        if (!document.body.classList.contains('page-home')) return;
+        function setDocHeightToFooter() {
+          requestAnimationFrame(function () {
+            var footer = document.querySelector('footer');
+            if (!footer) return;
+            var bottom = footer.getBoundingClientRect().bottom + window.scrollY;
+            document.documentElement.style.height = Math.ceil(bottom) + 'px';
+          });
+        }
+        function onReady() {
+          setDocHeightToFooter();
+          window.addEventListener('resize', setDocHeightToFooter);
+          window.addEventListener('load', setDocHeightToFooter);
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', onReady);
+        } else {
+          onReady();
+        }
+      })();
     </script>
 </body>
 
