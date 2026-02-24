@@ -208,6 +208,14 @@
     </div>
   </footer>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init({
+        publicKey: "geOD-eWNbMlcZRYem",
+      });
+    })();
+  </script>
   <script>
     document.documentElement.classList.add('js');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -221,7 +229,36 @@
 
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
-      alert('Thank you for your message. We’ll get back to you within 1 to 2 business days.');
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerText;
+
+      // Add a hidden time field
+      const timeInput = document.createElement('input');
+      timeInput.type = 'hidden';
+      timeInput.name = 'time';
+      timeInput.value = new Date().toLocaleString();
+      this.appendChild(timeInput);
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending...';
+
+      emailjs.sendForm('service_lu84ml7', 'template_27doof8', this)
+        .then(() => {
+          alert('Thank you! Your message has been sent successfully. We will get back to you shortly.');
+          this.reset();
+        }, (error) => {
+          alert('Sorry, there was an error sending your message. Please try again or contact us directly at bussiness@ixolink.com.');
+          console.error('EmailJS Error:', error);
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerText = originalBtnText;
+          if (timeInput.parentNode) {
+            this.removeChild(timeInput);
+          }
+        });
     });
 
     const observer = new IntersectionObserver((entries) => {
