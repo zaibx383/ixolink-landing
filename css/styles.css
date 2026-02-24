@@ -1168,7 +1168,7 @@
 
     .glass-heading,
     .section-header h2 {
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
       position: relative;
       display: inline-block;
       color: var(--deep-indigo);
@@ -2927,9 +2927,16 @@
     }
 
     .page-hero h1 {
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
       font-size: 3rem;
+      background: linear-gradient(135deg, var(--deep-indigo) 0%, var(--primary-violet) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      line-height: 1.2;
     }
+
 
 
     .page-hero .page-subtitle {
