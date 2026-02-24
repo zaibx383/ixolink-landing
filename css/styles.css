@@ -2805,6 +2805,7 @@
 
     .link-group ul li {
       margin-bottom: var(--spacing-xs);
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .link-group a {
