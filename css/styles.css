@@ -340,6 +340,11 @@
       transform: scaleX(1);
     }
 
+    header .primary-btn {
+      padding: 0.65rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
     .mobile-menu-btn {
       display: none;
       background: none;
