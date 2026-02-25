@@ -421,12 +421,13 @@
       margin-bottom: var(--spacing-sm);
       color: var(--dark-gray);
       opacity: 0.95;
+      font-weight: 500;
     }
 
     .hero-trust {
       font-size: 1.05rem !important;
       color: var(--primary-violet) !important;
-      font-weight: 500;
+      font-weight: 600;
       opacity: 0.9 !important;
       margin-bottom: var(--spacing-md) !important;
     }
