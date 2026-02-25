@@ -852,10 +852,7 @@
             </a>
             <a href="https://www.freelancer.com/u/LeadStudio09" class="social-icon" target="_blank"
               rel="noopener noreferrer" title="Freelancer">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12.9 12.3l2.8-5L1.8 19.2l3.4 2.1 7.7-9zM15.4 6.4L12.3 2 0 17.6l3 1.9 12.4-13.1zM24 13.9L22.2 11l-9 8 3 1.9 7.8-7z" />
-              </svg>
+              <img src="images/Freelancer Logo-01.png" alt="Freelancer">
             </a>
           </div>
         </div>
@@ -899,6 +896,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
 
   <script>
     document.documentElement.classList.add('js');
@@ -1045,6 +1050,26 @@
       updateTestimonialsSlider();
     });
 
+    // Go to Top functionality
+    (function () {
+      const goToTopBtn = document.getElementById('goToTop');
+      if (!goToTopBtn) return;
+
+      function updateGoToTop() {
+        if (window.pageYOffset > 300) {
+          goToTopBtn.classList.add('visible');
+        } else {
+          goToTopBtn.classList.remove('visible');
+        }
+      }
+
+      window.addEventListener('scroll', updateGoToTop, { passive: true });
+      updateGoToTop(); // run once on load in case page is already scrolled
+
+      goToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
   </script>
 </body>
 

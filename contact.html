@@ -100,8 +100,8 @@
             </div>
             <div class="contact-card">
               <h3>Email</h3>
-              <p><a href="mailto:bussiness@ixolink.com"
-                  style="color: var(--primary-violet); font-weight: 600;">bussiness@ixolink.com</a></p>
+              <p><a href="mailto:business@ixolink.com"
+                  style="color: var(--primary-violet); font-weight: 600;">business@ixolink.com</a></p>
             </div>
             <div class="contact-card">
               <h3>Office</h3>
@@ -195,7 +195,7 @@
           <h4>Contact Us</h4>
           <ul>
             <li><a href="tel:+923000289671">+92 300 0289671</a></li>
-            <li><a href="mailto:bussiness@ixolink.com">bussiness@ixolink.com</a></li>
+            <li><a href="mailto:business@ixolink.com">business@ixolink.com</a></li>
             <li>Main Jalandhar Colony Road, Street No 8 Near Rising Academy Hasilpur, Pakistan</li>
           </ul>
         </div>
@@ -226,6 +226,86 @@
     });
     mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
     closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; });
+    const goToTopBtn = document.getElementById('goToTop');
+
+    function showToast(message, type = 'success') {
+      let container = document.getElementById('toast-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+      }
+
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+
+      const icon = type === 'success' ?
+        '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="#10B981"/></svg>' :
+        '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM11 15H9V13H11V15ZM11 11H9V5H11V11Z" fill="#EF4444"/></svg>';
+
+      toast.innerHTML = `
+        <div class="toast-icon">${icon}</div>
+        <div class="toast-content">
+          <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close">✕</button>
+        <div class="toast-progress">
+          <div class="toast-progress-bar"></div>
+        </div>
+      `;
+
+      container.appendChild(toast);
+
+      // Trigger animation
+      setTimeout(() => {
+        toast.classList.add('show');
+        if (window.innerWidth <= 768 && goToTopBtn) {
+          goToTopBtn.classList.add('visible-with-toast');
+        }
+      }, 10);
+
+      const progressBar = toast.querySelector('.toast-progress-bar');
+      const duration = 5000;
+      let startTime = null;
+
+      function animateProgress(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const remaining = Math.max(0, 1 - progress / duration);
+        progressBar.style.transform = `scaleX(${remaining})`;
+
+        if (progress < duration) {
+          requestAnimationFrame(animateProgress);
+        } else {
+          removeToast();
+        }
+      }
+
+      const animationId = requestAnimationFrame(animateProgress);
+
+      function removeToast() {
+        toast.classList.remove('show');
+        if (window.innerWidth <= 768 && goToTopBtn) {
+          // Only remove if no other toasts are visible
+          setTimeout(() => {
+            const activeToasts = container.querySelectorAll('.toast.show');
+            if (activeToasts.length === 0) {
+              goToTopBtn.classList.remove('visible-with-toast');
+            }
+          }, 400);
+        }
+        setTimeout(() => {
+          if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+          }
+        }, 400);
+      }
+
+      toast.querySelector('.toast-close').addEventListener('click', () => {
+        cancelAnimationFrame(animationId);
+        removeToast();
+      });
+    }
 
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
@@ -246,10 +326,10 @@
 
       emailjs.sendForm('service_61zfeea', 'template_kqxi7l8', this)
         .then(() => {
-          alert('Thank you! Your message has been sent successfully. We will get back to you shortly.');
+          showToast('Thank you! Your message has been sent successfully. We will get back to you shortly.');
           this.reset();
         }, (error) => {
-          alert('Sorry, there was an error sending your message. Please try again or contact us directly at bussiness@ixolink.com.');
+          showToast('Sorry, there was an error sending your message. Please try again.', 'error');
           console.error('EmailJS Error:', error);
         })
         .finally(() => {
@@ -290,7 +370,28 @@
         });
       }, 3000);
     });
+
+    // Go to Top functionality
+    const goToTopBtn = document.getElementById('goToTop');
+    if (goToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          goToTopBtn.classList.add('visible');
+        } else {
+          goToTopBtn.classList.remove('visible');
+        }
+      });
+      goToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   </script>
+  <button class="go-to-top" id="goToTop" aria-label="Go to top">
+    <svg viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
 </body>
 
 </html>

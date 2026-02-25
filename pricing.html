@@ -413,7 +413,27 @@
         });
       }, 3000);
     });
+
+    // Go to Top functionality
+    const goToTopBtn = document.getElementById('goToTop');
+    if (goToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          goToTopBtn.classList.add('visible');
+        } else {
+          goToTopBtn.classList.remove('visible');
+        }
+      });
+      goToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   </script>
+  <button class="go-to-top" id="goToTop" aria-label="Go to top">
+    <svg viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
 </body>
 
 </html>
