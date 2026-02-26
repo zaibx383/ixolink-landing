@@ -2938,6 +2938,7 @@
       height: 20px;
       fill: currentColor;
       transition: transform 0.3s ease;
+      overflow: visible;
     }
 
     .social-icon img {
